@@ -1,0 +1,33 @@
+---
+
+- name: Create a directory for Automation Logic directory
+  file:
+    path: /opt/al/log
+    state: directory
+    mode: '0777'
+
+- stat: path=/opt/al/log/autologic.log
+  register: result
+
+- name: create autologic log file
+  file: path=/opt/al/log/autologic.log
+        owner=root
+        group=root
+        mode=0666
+        state={{ "file" if  result.stat.exists else "touch"}}
+
+- name: Copy startup script1
+  copy:
+    src: files/startup.sh
+    dest: /opt/al/startup.sh
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy autologic jar for any user to execute.
+  copy:
+    src: files/autologic.jar
+    dest: /opt/al/autologic.jar
+    owner: root
+    group: root
+    mode: '0755'

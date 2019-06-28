@@ -1,0 +1,27 @@
+---
+
+- name: Check for java at "{{ java_home }}"
+  stat: path="{{ java_home }}"
+  register: jdk_dir
+  become: true
+
+- name: Install openjdk repository
+  shell: add-apt-repository ppa:openjdk-r/ppa -y
+  when: not jdk_dir.stat.exists
+  become: true
+
+- name: Update package cache
+  apt: update_cache=yes
+  when: not jdk_dir.stat.exists
+  become: true
+
+- name: Install openjdk
+  apt: name=openjdk-8-jdk state=installed
+  when: not jdk_dir.stat.exists
+  become: true
+  notify:
+    - Start API Server
+
+#- name: Start API Server
+#  shell: cd /opt/al; nohup java -jar autologic.jar  </dev/null >/dev/null 2>&1 &
+#  become: true

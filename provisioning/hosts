@@ -1,0 +1,28 @@
+[all]
+localhost
+webapp01
+webapp02
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=vagrant
+ansible_ssh_pass=vagrant
+
+[loadbalancer]
+loadbalancer.local ansible_host=10.0.50.41 ansible_port=2222 ansible_user='vagrant'
+
+[loadbalancer:vars]
+hostname=loadbalancer.local:
+
+[webapp01]
+webapp1.local ansible_host=10.0.50.42 ansible_port=2222 ansible_user='vagrant'
+
+[webapp01:vars]
+hostname=webapp01.local
+
+
+[webapp02]
+webapp02.local ansible_host=10.0.50.43 ansible_port=2222 ansible_user='vagrant'
+
+[webapp02:vars]
+hostname=webapp02.local

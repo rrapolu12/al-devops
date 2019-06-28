@@ -1,0 +1,22 @@
+# Variables listed here are applicable to "java" roles
+---
+
+java_home: /usr/lib/jvm/java-8-openjdk-amd64/
+python_dir: /usr/bin/python
+
+############## Nginx Load Balancer Properties #########################
+loadbalancer_hostname: loadbalancer
+loadbalancer_ip: 10.0.50.41
+
+###############  REST URLNAMESPACE ##########################
+endpoint: /logic
+
+############## Webapp01 Properties #########################
+webapp01_hostname: webapp01
+webapp01_ip: 10.0.50.42
+webapp01_port: 9999
+
+############## Webapp02 Properties #########################
+webapp02_hostname: webapp02
+webapp02_ip: 10.0.50.43
+webapp02_port: 9999

@@ -1,0 +1,26 @@
+---
+
+- name: Copy nginx.conf to /etc/nginx/nginx.conf
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: update hosts file with webapp hosts.
+  copy:
+    src: files/nginx.conf.jar
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Add IP address of all hosts to all hosts
+  lineinfile:
+    dest: /etc/hosts
+    line: "{{ hostvars[item].ansible_host }} {{ hostvars[item].inventory_hostname }} {{ hostvars[item].inventory_hostname_short }}"
+    state: present
+  with_items: "{{ groups.all }}"
+
+127.0.0.1       localhost

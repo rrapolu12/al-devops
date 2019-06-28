@@ -1,0 +1,14 @@
+http {
+  upstream auto_logic {
+    server webapp01/logic;
+    server webapp02/logic;
+  }
+
+  server {
+    listen 80;
+
+    location / {
+      proxy_pass http://auto_logic;
+    }
+  }
+}
