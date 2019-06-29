@@ -11,18 +11,27 @@ Documentation for Technical Test
 
 Pre-Requisites & Requirements
 ------------
- - Virtual Box (latest), currently i am using v6.0 
- - Ansible > 2.0
- - VM Provided in the Test to be used and Variables Created in the Vagrant File: 
-    ```ruby
-    UBUNTU_BIONIC64 = "ubuntu/bionic64"
-    UBUNTU_BIONIC64_URL = "https://app.vagrantup.com/ubuntu/boxes/bionic64"
-    ```
- - OpenJDK Version1.8 used to create Spring Boot Web Servers `openjdk-8-jdk` nad used oracle repos.
- - Spring Boot 2.1.6-RELEASE (latest)
- - MySQL 5.1.7 and Java Connector from Spring Boot Dependency tree
- - Nginx 1.7
+1) Host Requirement
+     - Vagrant installed required.
+     - Virtual Box (latest), currently i am using v6.0 
+     - Ansible > 2.0
+     - Python 2.7+
+     - Internet Connectivity.
+
+2)   Guest Requirements are all programmed as part of the Ansible Tasks.
+     
+     - VM Provided in the Test to be used and Variables Created in the Vagrant File: 
+        ```ruby
+        UBUNTU_BIONIC64 = "ubuntu/bionic64"
+        UBUNTU_BIONIC64_URL = "https://app.vagrantup.com/ubuntu/boxes/bionic64"
+        ```
+     - OpenJDK Version1.8 used to create Spring Boot Web Servers `openjdk-8-jdk` nad used oracle repos.
+     - Spring Boot 2.1.6-RELEASE (latest)
+     - MySQL 5.1.7 and Java Connector from Spring Boot Dependency tree
+     - Nginx 1.7
  
+ 3) Shell (nix systems) or Mac to Execute Shell Scripts.
+  
  Assumptions
  ------------
  - I have used a Restful Service to Retrieve Data from MySQL Server with Sample Data Setup for 3 User Records.
@@ -70,6 +79,11 @@ Sample Data
 -----------------------------------------------------
 ```
 
-Testing URL
-----------------
-if 
+How to Execute
+------------------------
+
+1) Software in the Pre-Requirements are mandatory for Startup to be successful.
+    - Ansible > 2.0
+    - Vagrant installation.
+    - Virtual Box 5.x/6.x(Recommeded)
+    - Python2.7+
