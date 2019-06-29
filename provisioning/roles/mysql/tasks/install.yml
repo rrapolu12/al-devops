@@ -1,0 +1,89 @@
+---
+- name: Add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install the mysql packages in Ubuntu/Debian derivatives
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items:
+    - "{{ mysql_pkgs }}"
+  environment: "{{ env }}"
+  when: ansible_os_family == 'Debian'
+
+- name: Copy the my.cnf file
+  template: src=my.cnf.{{ ansible_os_family }}.j2 dest={{ mysql_conf_dir }}/my.cnf
+  notify:
+   - restart mysql
+
+- name: Create the directory /etc/mysql/conf.d
+  file: path=/etc/mysql/conf.d state=directory
+  notify:
+   - restart mysql
+
+- name: Deploy mysql config to conf.d
+  template: src=mysql.cnf.j2 dest=/etc/mysql/conf.d/mysql.cnf
+  notify:
+    - restart mysql
+
+- name: Start the mysql services
+  service: name={{ mysql_service }} state=started enabled=yes
+
+- name: update mysql root password for all root accounts When ansible_host != localhost
+  mysql_user: name=root host={{ item }} password={{ mysql_root_db_pass }}
+  with_items:
+   - "{{ ansible_hostname }}"
+   - 127.0.0.1
+   - ::1
+   - localhost
+  when: ansible_hostname != 'localhost'
+
+- name: update mysql root password for all root accounts When ansible_host( {{ ansible_hostname }}) == localhost
+  mysql_user: name=root host={{ item }} password={{ mysql_root_db_pass }}
+  with_items:
+   - 127.0.0.1
+   - ::1
+   - localhost
+  when: ansible_hostname == 'localhost'
+
+- name: copy .my.cnf file with root password credentials
+  template: src=.my.cnf.j2 dest=~/.my.cnf mode=0600
+
+- name: ensure anonymous users are not in the database
+  mysql_user: name='' host={{ item }} state=absent
+  with_items:
+   - localhost
+   - "{{ ansible_hostname }}"
+
+- name: remove the test database
+  mysql_db: name=test state=absent
+
+- name: Create the database's
+  mysql_db: name={{ item.name }} state=present
+  with_items:
+    - "{{ mysql_db }}"
+  when: mysql_db|lower() != 'none'
+
+- name: Create the database users
+  mysql_user: name={{ item.name }}  password={{ item.pass|default("") }}
+                priv={{ item.priv|default("*.*:ALL") }} state=present host={{ item.host | default("%") }}
+  with_items:
+    - "{{ mysql_users }}"
+  when: mysql_users|lower() != 'none'
+
+########## Create Sample Data from SQL FILE
+- name: Create a directory for Automation Logic directory
+  file:
+    path: /opt/al/sql
+    state: directory
+    mode: '0666'
+
+- name: Copy startup DB Schema Script
+  copy:
+    src: files/users.sql
+    dest: /opt/al/sql/users.sql
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Import DB Schema with Sample Data for 3 Users
+  shell: mysql autologic < /opt/al/sql/users.sql
+  become: true

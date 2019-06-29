@@ -2,6 +2,7 @@
 localhost
 webapp01
 webapp02
+mysqldb
 
 [all:vars]
 ansible_connection=ssh
@@ -26,3 +27,9 @@ webapp02.local ansible_host=10.0.50.43 ansible_port=2222 ansible_user='vagrant'
 
 [webapp02:vars]
 hostname=webapp02.local
+
+[mysqldb]
+mysqldb.local ansible_host=10.0.50.44 ansible_port=2222 ansible_user='vagrant'
+
+[mysqldb:vars]
+hostname=mysqldb.local

@@ -1,0 +1,3 @@
+---
+- include: python-playbook.yml
+- include: mysql-playbook.yml

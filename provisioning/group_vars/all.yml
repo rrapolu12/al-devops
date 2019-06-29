@@ -1,6 +1,7 @@
 # Variables listed here are applicable to "java" roles
 ---
 
+ansible_os_family: ubuntu
 java_home: /usr/lib/jvm/java-8-openjdk-amd64/
 python_dir: /usr/bin/python
 
