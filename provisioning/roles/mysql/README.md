@@ -1,18 +1,24 @@
 MySQL Server
 ============
 
-This roles helps to install MySQL Server across RHEL and Ubuntu variants.
-Apart from installing the MySQL Server, it applies basic hardening, like
-securing the root account with password, and removing test databases. The role
-can also be used to add databases to the MySQL server and create users in the
-database. It also supports configuring the databases for replication--both
-master and slave can be configured via this role.
+This roles helps to install MySQL Server across Ubuntu variants. Apart from installing the MySQL Server, it applies basic hardening, like
+securing the root account with password, removing test databases.The role also be used to add databases to the MySQL server and 
+create users in the database. 
+Note : It also supports configuring the databases for replication--both master and slave can be configured via this role.
+       But Disabled for now.
 
 Requirements
 ------------
 
-This role requires Ansible 1.4 or higher, and platform requirements are listed
-in the metadata file.
+This role requires Ansible 1.4 or higher, and platform requirements are listed in the metadata file.
+
+Playbooks
+---------
+This Role Contains 2 Playbooks,
+
+1) For custom installing python2.7, This decision has been taken to avoid failures when the VM is deployed, 
+   because of gather_facts trying to use 2.7 and some components does not work on python3
+2) This installs python 2.7 and gather_facts does not fail and install mysql5.1
 
 Role Variables
 --------------
