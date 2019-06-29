@@ -4,10 +4,7 @@ WebApp Server
 This is Spring Boot Restful Server serving the http Requests as GET,PUT,POST,DELETE. This uses MySQL Connector to 
 communicate with the MySQL Server on default port 3306 
 
-Requirements
-------------
-
-This role requires Ansible 1.4 or higher, and platform requirements are listed in the metadata file.
+For the Excercise, i have assumed only GET to fetch 2 Sample Records from Database that was setup in mysql during installation.
 
 Playbooks
 ---------
@@ -19,8 +16,6 @@ SpringBoot Executable Jar
 --------------------------
 1) Under Files directory under nginx role, you have `autologic.jar`
 2) Task for Copying, providing permissions and executing this jar is as follows
-    ``
-
 ```
 WEBAPP_1_IP = "10.0.50.42"
 WEBAPP_2_IP = "10.0.50.43"
@@ -32,7 +27,7 @@ All VM's start in  **promiscuous mode** and allow all hosts to communicate.
 Two Web App Servers
 --------------------------
 
-Currently for this excercise, i have used 2 web servers with same jar on 2 different VM's and 
+Currently for this excercise, i have used 2 web servers with autologic.jar on 2 different VM's and 
 then these 2 two are loadbalanced in NGINX. 
 
 Spring Boot Configuration

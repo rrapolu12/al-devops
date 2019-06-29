@@ -1,19 +1,7 @@
 NGINX LoadbLancer Server
 ============
 
-This VM has NGINX Community Server.
-
-Requirements
-------------
-
-This role requires 
-1) Ansible 1.4 or higher, and platform requirements are listed in the metadata file.
-2) Nginx latest from the repository.
-3) 
-
-Improvements
---------------
-1) 
+This VM used is  NGINX Community Server v1.7
 
 Playbooks
 ---------
@@ -25,9 +13,10 @@ Memory Requirements
 1) 1024 MB RAM
 2) 1 CPU
 
+`Note: These can be upgraded, as per availability of resources.`
+
 IP Address Used: `10.0.50.41`
 
-`Note: These can be upgraded, as per availability of resources.`
 
 Starting the VM
 -------------------
