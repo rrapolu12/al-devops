@@ -105,3 +105,8 @@ How to Execute
 2) Order of Vagrant Tasks are defined as MySQL,Webapp01,Webapp02,NginxServer.
 3) run ./startVagrant.sh, this is Idempotent, only changes to tasks will apply the changes.
 4) Test
+
+Improvement
+------------------------
+1) I have updated independent README files for each role.
+2) But Refactored can be made on many fronts, i tried my best to update each independent README.
