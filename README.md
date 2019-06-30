@@ -1,6 +1,12 @@
+
+
 Documentation for Technical Test
 -------------------------------------
- 
+
+Total Time Taken
+--------------------
+12 Hours.
+
 Nginx Loadbalancer  (https://github.com/rrapolu12/al-devops/provisioning/roles/nginx/README.md)
    
 | Role                      |         README                       |
