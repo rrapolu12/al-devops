@@ -1,7 +1,7 @@
 Documentation for Technical Test
 -------------------------------------
  
-   Nginx Loadbalancer  (https://github.com/rrapolu12/al-devops/provisioning/roles/nginx/README.md)
+Nginx Loadbalancer  (https://github.com/rrapolu12/al-devops/provisioning/roles/nginx/README.md)
    
 | Role                      |         README                       |
 | --------------------------|--------------------------------------|
@@ -79,6 +79,21 @@ Sample Data
 -----------------------------------------------------
 ```
 
+Tests for LoadBalancer Asserts has been defined as post tasks.
+------------
+1) Ask1: Test Loadbalancing works?
+
+    Two Post Tasks has been created in nginx-playbook.yml.
+    Since the weight of loadbalancer is 1, so every alternate request will go to other server.
+    so 2 tasks have been defined with response as appName.
+
+2) Ask2: Check the Database Connection via REST API.
+    One Post Task has been created in 
+
+      
+
+-------
+
 How to Execute
 ------------------------
 
@@ -87,3 +102,6 @@ How to Execute
     - Vagrant installation.
     - Virtual Box 5.x/6.x(Recommeded)
     - Python2.7+
+2) Order of Vagrant Tasks are defined as MySQL,Webapp01,Webapp02,NginxServer.
+3) run ./startVagrant.sh, this is Idempotent, only changes to tasks will apply the changes.
+4) Test

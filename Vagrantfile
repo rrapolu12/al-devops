@@ -101,6 +101,7 @@ Vagrant.configure("2") do |config|
     ## Now Provision Software Using Ansible
     subconfig.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/nginx-playbook.yml"
+      ansible.verbose = "vvv"
     end
   end
 

@@ -4,3 +4,10 @@
   gather_facts: true
   roles:
     - role: mysql
+  post_tasks:
+    - name:  Get User Name
+      command: mysql -u alogic -p alogic autologic -Ns -e "select name from user where id = 1"
+      register: username
+      failed_when: username == "Mark Twain"
+
+
