@@ -5,3 +5,5 @@
   roles:
     - role: common_utils
     - role: nginx
+  post_tasks:
+    - shell: curl http://loadbalancer/test | grep we

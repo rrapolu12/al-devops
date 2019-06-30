@@ -1,0 +1,9 @@
+---
+
+- name: Install Nginx
+  apt: name={{item}} state=installed
+  with_items:
+    - nginx
+  notify:
+    - Restart Nginx
+  become: true

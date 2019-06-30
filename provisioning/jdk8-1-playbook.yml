@@ -2,6 +2,8 @@
 - hosts: webapp01
   become: yes
   gather_facts: false
+  vars:
+    appName: "{{ appName }}"
   roles:
     - role: common_utils
     - role: jdk8

@@ -20,6 +20,7 @@ webapp1.local ansible_host=10.0.50.42 ansible_port=2222 ansible_user='vagrant'
 
 [webapp01:vars]
 hostname=webapp01.local
+appName=webapp01
 
 
 [webapp02]
@@ -27,6 +28,7 @@ webapp02.local ansible_host=10.0.50.43 ansible_port=2222 ansible_user='vagrant'
 
 [webapp02:vars]
 hostname=webapp02.local
+appName=webapp02
 
 [mysqldb]
 mysqldb.local ansible_host=10.0.50.44 ansible_port=2222 ansible_user='vagrant'

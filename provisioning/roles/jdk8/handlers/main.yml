@@ -1,4 +1,4 @@
 ---
 - name: Start API Server
-  shell: cd /opt/al; nohup java -jar autologic.jar  </dev/null >/dev/null 2>&1 &
+  shell: cd /opt/al; nohup java -DappName={{ appName }} -jar autologic.jar  </dev/null >/dev/null 2>&1 &
   become: true
