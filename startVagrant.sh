@@ -1,4 +1,4 @@
 #!/bin/sh
 
 #####   This is Idempotent.
-vagrant up --provision
+vagrant up --provision &
