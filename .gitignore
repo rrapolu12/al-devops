@@ -10,6 +10,14 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+#Intellij Jetbrains
+.idea/
+
+
+#Vagrant
+.vagrant/
+*.retry
+
 # Package Files #
 #*.jar
 *.war
