@@ -3,7 +3,7 @@
 Technical Test Documentation
 -------------------------------------
 
-Total Time Taken
+Total Time Taken (in Progress)
 --------------------
 12 Hours.
 
