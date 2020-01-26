@@ -1,6 +1,6 @@
 
 
-Documentation for Technical Test
+Technical Test Documentation
 -------------------------------------
 
 Total Time Taken
